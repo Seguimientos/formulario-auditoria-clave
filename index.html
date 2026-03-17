@@ -12,30 +12,30 @@
     }
     .header { 
       text-align: center; 
-      margin-bottom: 0px; /* 🔥 CERO ESPACIO */
-      padding: 15px 0; /* 🔥 PADDING REDUCIDO */
+      margin-bottom: 0px;
+      padding: 15px 0; 
     }
     .logo { 
       max-width: 200px; 
       height: auto; 
-      margin-bottom: 2px; /* 🔥 MUY POCO */
+      margin-bottom: 2px; 
     }
     .container { 
       max-width:900px; 
-      margin:10px auto; /* 🔥 MUY POCO ARRIBA */
+      margin:10px auto; 
       background:#f5f5f5; 
-      padding:25px; /* 🔥 PADDING REDUCIDO */
+      padding:25px; 
       border-radius:12px; 
       box-shadow:0 2px 6px rgba(0,0,0,0.1); 
     }
     h1 { 
       margin-top:0; 
-      margin-bottom: 5px; /* 🔥 MUY POCO */
+      margin-bottom: 5px; 
       color:#005f66; 
     }
     label { 
       display:block; 
-      margin-top:12px; /* 🔥 MENOS */
+      margin-top:12px; 
       font-weight:bold; 
       color: #005f66; 
     }
@@ -44,23 +44,29 @@
       padding:12px 15px; 
       margin-top:5px; 
       box-sizing:border-box; 
-      border: 2px solid #26A69A; 
+      border: 2px solid #00727a; /* 🔥 AZUL DEL BOTÓN Y LETRA */
       border-radius: 12px; 
     }
     input:focus {
       outline: none;
-      border-color: #00727a; 
-      box-shadow: 0 0 0 3px rgba(38,166,154,0.1);
+      border-color: #005f66; 
+      box-shadow: 0 0 0 3px rgba(0,114,122,0.1);
     }
     button { 
-      margin-top:20px; /* 🔥 MENOS */
-      padding:12px 30px; 
-      background:#00727a; 
+      width: 100%;
+      margin-top:20px; 
+      padding:12px 15px; 
+      background:#00727a; /* 🔥 AZUL BOTÓN */
       color:white; 
       border:none; 
       border-radius: 12px; 
       cursor:pointer; 
       font-size:16px; 
+      font-weight: bold; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box; 
     }
     button:disabled { 
       background:#999; 
@@ -97,17 +103,17 @@
 
   <div class="container">
     <form id="auditoriaForm">
-      <label>Correo:</label>
-      <input type="email" name="Correo" required />
+      <label>Correo empresa:</label>
+      <input type="email" name="Correo empresa" required />
 
-      <label>Nombre empresa auditora:</label>
-      <input type="text" name="Nombre empresa auditora" required />
+      <label>Empresa auditora:</label>
+      <input type="text" name="Empresa auditora" required />
 
-      <label>Nombre responsable auditoría:</label>
-      <input type="text" name="Nombre responsable auditoría" required />
+      <label>Nombre auditor:</label>
+      <input type="text" name="Nombre auditor" required />
 
-      <label>Mail auditor responsable:</label>
-      <input type="email" name="Mail auditor responsable" required />
+      <label>Correo auditor:</label>
+      <input type="email" name="Correo auditor" required />
 
       <div class="fila">
         <div>
@@ -115,8 +121,8 @@
           <input type="date" name="Fecha inicio auditoría" required />
         </div>
         <div>
-          <label>Fecha estimada informe auditoría:</label>
-          <input type="date" name="Fecha estimada informe auditoría" required />
+          <label>Fecha estimada de informe:</label>
+          <input type="date" name="Fecha estimada de informe" required />
         </div>
       </div>
 
@@ -137,12 +143,12 @@
       msg.textContent = "Enviando...";
 
       const data = {
-        "Correo": form.querySelector('[name="Correo"]').value,
-        "Nombre empresa auditora": form.querySelector('[name="Nombre empresa auditora"]').value,
-        "Nombre responsable auditoría": form.querySelector('[name="Nombre responsable auditoría"]').value,
-        "Mail auditor responsable": form.querySelector('[name="Mail auditor responsable"]').value,
+        "Correo empresa": form.querySelector('[name="Correo empresa"]').value,
+        "Empresa auditora": form.querySelector('[name="Empresa auditora"]').value,
+        "Nombre auditor": form.querySelector('[name="Nombre auditor"]').value,
+        "Correo auditor": form.querySelector('[name="Correo auditor"]').value,
         "Fecha inicio auditoría": form.querySelector('[name="Fecha inicio auditoría"]').value,
-        "Fecha estimada informe auditoría": form.querySelector('[name="Fecha estimada informe auditoría"]').value
+        "Fecha estimada de informe": form.querySelector('[name="Fecha estimada de informe"]').value
       };
 
       try {
