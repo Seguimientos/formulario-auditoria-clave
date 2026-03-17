@@ -37,26 +37,30 @@
       display:block; 
       margin-top:12px; 
       font-weight:bold; 
-      color: #005f66; 
+      color: #003d47; /* 🔥 AZUL MUY OSCURO (parece gris/negro) */
     }
     input { 
       width:100%; 
       padding:12px 15px; 
       margin-top:5px; 
       box-sizing:border-box; 
-      border: 2px solid #00727a; /* 🔥 AZUL DEL BOTÓN Y LETRA */
+      border: 2px solid #00727a; 
       border-radius: 12px; 
+      color: #003d47; /* 🔥 TEXTO INPUTS AZUL OSCURO */
+    }
+    input::placeholder {
+      color: #666; /* Placeholder gris suave */
     }
     input:focus {
       outline: none;
-      border-color: #005f66; 
+      border-color: #00727a; 
       box-shadow: 0 0 0 3px rgba(0,114,122,0.1);
     }
     button { 
       width: 100%;
       margin-top:20px; 
       padding:12px 15px; 
-      background:#00727a; /* 🔥 AZUL BOTÓN */
+      background:#00727a; 
       color:white; 
       border:none; 
       border-radius: 12px; 
