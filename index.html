@@ -6,59 +6,59 @@
   <style>
     body { 
       font-family: Arial, sans-serif; 
-      background:#f5f5f5; 
+      background:#ffffff;
       margin:0; 
       max-width:100%; 
     }
     .header { 
       text-align: center; 
-      margin-bottom: 10px; /* 🔥 MENOS ESPACIO */
-      padding: 20px 0; 
+      margin-bottom: 0px; /* 🔥 CERO ESPACIO */
+      padding: 15px 0; /* 🔥 PADDING REDUCIDO */
     }
     .logo { 
       max-width: 200px; 
       height: auto; 
-      margin-bottom: 5px; /* 🔥 MENOS ESPACIO */
+      margin-bottom: 2px; /* 🔥 MUY POCO */
     }
     .container { 
       max-width:900px; 
-      margin:20px auto; /* 🔥 MENOS ESPACIO ARRIBA */
-      background:#ffffff; 
-      padding:30px; 
-      border-radius:12px; /* 🔥 BORDES REDONDOS CONTENEDOR */
+      margin:10px auto; /* 🔥 MUY POCO ARRIBA */
+      background:#f5f5f5; 
+      padding:25px; /* 🔥 PADDING REDUCIDO */
+      border-radius:12px; 
       box-shadow:0 2px 6px rgba(0,0,0,0.1); 
     }
     h1 { 
       margin-top:0; 
-      margin-bottom: 10px; /* 🔥 MENOS ESPACIO */
+      margin-bottom: 5px; /* 🔥 MUY POCO */
       color:#005f66; 
     }
     label { 
       display:block; 
-      margin-top:15px; 
+      margin-top:12px; /* 🔥 MENOS */
       font-weight:bold; 
-      color: #333333; 
+      color: #005f66; 
     }
     input { 
       width:100%; 
       padding:12px 15px; 
       margin-top:5px; 
       box-sizing:border-box; 
-      border: 2px solid #00727a; /* 🔥 COLOR EXACTO DEL BOTÓN */
-      border-radius: 12px; /* 🔥 BORDES REDONDOS */
+      border: 2px solid #26A69A; 
+      border-radius: 12px; 
     }
     input:focus {
       outline: none;
-      border-color: #005f66; 
-      box-shadow: 0 0 0 3px rgba(0,114,122,0.1);
+      border-color: #00727a; 
+      box-shadow: 0 0 0 3px rgba(38,166,154,0.1);
     }
     button { 
-      margin-top:25px; 
+      margin-top:20px; /* 🔥 MENOS */
       padding:12px 30px; 
       background:#00727a; 
       color:white; 
       border:none; 
-      border-radius: 12px; /* 🔥 BOTÓN REDONDO */
+      border-radius: 12px; 
       cursor:pointer; 
       font-size:16px; 
     }
@@ -96,8 +96,6 @@
   </div>
 
   <div class="container">
-    <!-- 🔥 QUITADO: "Rellena los datos..." -->
-
     <form id="auditoriaForm">
       <label>Correo:</label>
       <input type="email" name="Correo" required />
@@ -122,7 +120,7 @@
         </div>
       </div>
 
-      <button type="submit" id="btnEnviar">Enviar</button> <!-- 🔥 CAMBIADO -->
+      <button type="submit" id="btnEnviar">Enviar</button>
       <div class="mensaje" id="mensaje"></div>
     </form>
   </div>
