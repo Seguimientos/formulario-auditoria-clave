@@ -10,6 +10,16 @@
       margin:0; 
       max-width:100%; 
     }
+    .header { 
+      text-align: center; 
+      margin-bottom: 20px; 
+      padding: 20px 0; 
+    }
+    .logo { 
+      max-width: 200px; 
+      height: auto; 
+      margin-bottom: 10px; 
+    }
     .container { 
       max-width:900px; 
       margin:40px auto; 
@@ -26,19 +36,19 @@
       display:block; 
       margin-top:15px; 
       font-weight:bold; 
-      color: #333333; /* Gris oscuro elegante */
+      color: #333333; 
     }
     input { 
       width:100%; 
       padding:8px 10px; 
       margin-top:5px; 
       box-sizing:border-box; 
-      border: 2px solid #26A69A; /* AZUL TEAL exacto como tu captura */
+      border: 2px solid #26A69A; 
       border-radius:4px; 
     }
     input:focus {
       outline: none;
-      border-color: #00727a; /* Azul más oscuro al enfocar */
+      border-color: #00727a; 
     }
     button { 
       margin-top:25px; 
@@ -78,31 +88,36 @@
   </style>
 </head>
 <body>
+  <div class="header">
+    <!-- AQUÍ VA TU LOGO PNG -->
+    <img src="logoclave.png" alt="Logo Clave Capital" class="logo">
+    <h1>Formulario de Auditoría</h1>
+  </div>
+
   <div class="container">
-    <h1>Formulario de Auditoría Clave</h1>
     <p>Rellena los datos para programar tu auditoría.</p>
 
     <form id="auditoriaForm">
-      <label>Correo empresa *</label>
-      <input type="email" name="correo_empresa" required />
+      <label>Correo:</label>
+      <input type="email" name="Correo" required />
 
-      <label>Empresa auditora *</label>
-      <input type="text" name="nombre_empresa_auditora" required />
+      <label>Nombre empresa auditora:</label>
+      <input type="text" name="Nombre empresa auditora" required />
 
-      <label>Nombre auditor *</label>
-      <input type="text" name="nombre_auditor" required />
+      <label>Nombre responsable auditoría:</label>
+      <input type="text" name="Nombre responsable auditoría" required />
 
-      <label>Correo auditor *</label>
-      <input type="email" name="correo_auditor" required />
+      <label>Mail auditor responsable:</label>
+      <input type="email" name="Mail auditor responsable" required />
 
       <div class="fila">
         <div>
-          <label>Fecha inicio auditoría *</label>
-          <input type="date" name="fecha_inicio_auditoria" required />
+          <label>Fecha inicio auditoría:</label>
+          <input type="date" name="Fecha inicio auditoría" required />
         </div>
         <div>
-          <label>Fecha estimada de informe *</label>
-          <input type="date" name="fecha_estimacion_informe" required />
+          <label>Fecha estimada informe auditoría:</label>
+          <input type="date" name="Fecha estimada informe auditoría" required />
         </div>
       </div>
 
@@ -123,16 +138,16 @@
       msg.textContent = "Enviando...";
 
       const data = {
-        correo_empresa: form.correo_empresa.value,
-        nombre_empresa_auditora: form.nombre_empresa_auditora.value,
-        nombre_auditor: form.nombre_auditor.value,
-        correo_auditor: form.correo_auditor.value,
-        fecha_inicio_auditoria: form.fecha_inicio_auditoria.value,
-        fecha_estimacion_informe: form.fecha_estimacion_informe.value
+        "Correo": form.querySelector('[name="Correo"]').value,
+        "Nombre empresa auditora": form.querySelector('[name="Nombre empresa auditora"]').value,
+        "Nombre responsable auditoría": form.querySelector('[name="Nombre responsable auditoría"]').value,
+        "Mail auditor responsable": form.querySelector('[name="Mail auditor responsable"]').value,
+        "Fecha inicio auditoría": form.querySelector('[name="Fecha inicio auditoría"]').value,
+        "Fecha estimada informe auditoría": form.querySelector('[name="Fecha estimada informe auditoría"]').value
       };
 
       try {
-        const resp = await fetch("TU_URL_POWER_AUTOMATE", {
+        const resp = await fetch("https://default7042d393b8c4451aa8f811f6aed5da.85.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3260704b65884a30af1b8d8602a0db7a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=E6VyfXl22cZQJLQWaPm-GyKot4Q-LwKq0g5zxxrqbfk", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
