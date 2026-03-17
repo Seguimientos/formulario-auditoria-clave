@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulario de Auditoría Clave</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f5f5f5; margin:0; }
+    .container { max-width:900px; margin:40px auto; background:#ffffff; padding:30px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+    h1 { margin-top:0; color:#005f66; }
+    label { display:block; margin-top:15px; font-weight:bold; }
+    input { width:100%; padding:8px 10px; margin-top:5px; box-sizing:border-box; }
+    button { margin-top:25px; padding:10px 25px; background:#00727a; color:white; border:none; border-radius:4px; cursor:pointer; }
+    button:disabled { background:#999; cursor:not-allowed; }
+    .fila { display:flex; gap:20px; }
+    .fila > div { flex:1; }
+    .mensaje { margin-top:15px; font-size:14px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Formulario de Auditoría Clave</h1>
+
+    <form id="auditoriaForm">
+      <label>Correo empresa</label>
+      <input type="email" name="correo_empresa" required />
+
+      <label>Empresa auditora</label>
+      <input type="text" name="nombre_empresa_auditora" required />
+
+      <label>Nombre auditor</label>
+      <input type="text" name="nombre_auditor" required />
+
+      <label>Correo auditor</label>
+      <input type="email" name="correo_auditor" required />
+
+      <div class="fila">
+        <div>
+          <label>Fecha inicio auditoría</label>
+          <input type="date" name="fecha_inicio_auditoria" required />
+        </div>
+        <div>
+          <label>Fecha estimada de informe</label>
+          <input type="date" name="fecha_estimacion_informe" required />
+        </div>
+      </div>
+
+      <button type="submit" id="btnEnviar">Enviar</button>
+      <div class="mensaje" id="mensaje"></div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("auditoriaForm");
+    const btn = document.getElementById("btnEnviar");
+    const msg = document.getElementById("mensaje");
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      btn.disabled = true;
+      msg.textContent = "Enviando...";
+
+      const data = {
+        correo_empresa: form.correo_empresa.value,
+        nombre_empresa_auditora: form.nombre_empresa_auditora.value,
+        nombre_auditor: form.nombre_auditor.value,
+        correo_auditor: form.correo_auditor.value,
+        fecha_inicio_auditoria: form.fecha_inicio_auditoria.value,
+        fecha_estimacion_informe: form.fecha_estimacion_informe.value
+      };
+
+      try {
+        const resp = await fetch("https://default7042d393b8c4451aa8f811f6aed5da.85.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3260704b65884a30af1b8d8602a0db7a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=E6VyfXl22cZQJLQWaPm-GyKot4Q-LwKq0g5zxxrqbfk", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        if (resp.ok) {
+          msg.textContent = "Formulario enviado correctamente.";
+          form.reset();
+        } else {
+          msg.textContent = "Error al enviar (código " + resp.status + ").";
+        }
+      } catch (err) {
+        msg.textContent = "Error de conexión al enviar el formulario.";
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
