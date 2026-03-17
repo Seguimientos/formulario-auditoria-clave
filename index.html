@@ -102,7 +102,7 @@
 <body>
   <div class="header">
     <img src="logoclave.png" alt="Logo Clave Capital" class="logo">
-    <h1>Formulario de Auditoría</h1>
+    <h1>Formulario de Auditoría Clave</h1>
   </div>
 
   <div class="container">
@@ -145,15 +145,16 @@
       btn.disabled = true;
       msg.className = "mensaje";
       msg.textContent = "Enviando...";
-
+      
       const data = {
-        "Correo empresa": form.querySelector('[name="Correo empresa"]').value,
-        "Empresa auditora": form.querySelector('[name="Empresa auditora"]').value,
-        "Nombre auditor": form.querySelector('[name="Nombre auditor"]').value,
-        "Correo auditor": form.querySelector('[name="Correo auditor"]').value,
-        "Fecha inicio auditoría": form.querySelector('[name="Fecha inicio auditoría"]').value,
-        "Fecha estimada de informe": form.querySelector('[name="Fecha estimada de informe"]').value
+        correo_empresa: form.querySelector('[name="Correo empresa"]').value,
+        nombre_empresa_auditora: form.querySelector('[name="Empresa auditora"]').value,
+        nombre_auditor: form.querySelector('[name="Nombre auditor"]').value,
+        correo_auditor: form.querySelector('[name="Correo auditor"]').value,
+        fecha_inicio_auditoria: form.querySelector('[name="Fecha inicio auditoría"]').value,
+        fecha_estimacion_informe: form.querySelector('[name="Fecha estimada de informe"]').value
       };
+
 
       try {
         const resp = await fetch("https://default7042d393b8c4451aa8f811f6aed5da.85.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3260704b65884a30af1b8d8602a0db7a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=E6VyfXl22cZQJLQWaPm-GyKot4Q-LwKq0g5zxxrqbfk", {
