@@ -4,47 +4,50 @@
   <meta charset="UTF-8" />
   <title>Formulario de Auditoría Clave</title>
   <style>
-    body { font-family: Arial, sans-serif; background:#f5f5f5; margin:0; }
+    body { font-family: Arial, sans-serif; background:#f5f5f5; margin:0; max-width:100%; }
     .container { max-width:900px; margin:40px auto; background:#ffffff; padding:30px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
     h1 { margin-top:0; color:#005f66; }
     label { display:block; margin-top:15px; font-weight:bold; }
-    input { width:100%; padding:8px 10px; margin-top:5px; box-sizing:border-box; }
-    button { margin-top:25px; padding:10px 25px; background:#00727a; color:white; border:none; border-radius:4px; cursor:pointer; }
+    input { width:100%; padding:8px 10px; margin-top:5px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px; }
+    button { margin-top:25px; padding:12px 30px; background:#00727a; color:white; border:none; border-radius:4px; cursor:pointer; font-size:16px; }
     button:disabled { background:#999; cursor:not-allowed; }
     .fila { display:flex; gap:20px; }
     .fila > div { flex:1; }
-    .mensaje { margin-top:15px; font-size:14px; }
+    .mensaje { margin-top:15px; font-size:14px; padding:10px; border-radius:4px; }
+    .exito { background:#d4edda; color:#155724; }
+    .error { background:#f8d7da; color:#721c24; }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Formulario de Auditoría Clave</h1>
+    <p>Rellena los datos para programar tu auditoría.</p>
 
     <form id="auditoriaForm">
-      <label>Correo empresa</label>
+      <label>Correo empresa *</label>
       <input type="email" name="correo_empresa" required />
 
-      <label>Empresa auditora</label>
+      <label>Empresa auditora *</label>
       <input type="text" name="nombre_empresa_auditora" required />
 
-      <label>Nombre auditor</label>
+      <label>Nombre auditor *</label>
       <input type="text" name="nombre_auditor" required />
 
-      <label>Correo auditor</label>
+      <label>Correo auditor *</label>
       <input type="email" name="correo_auditor" required />
 
       <div class="fila">
         <div>
-          <label>Fecha inicio auditoría</label>
+          <label>Fecha inicio auditoría *</label>
           <input type="date" name="fecha_inicio_auditoria" required />
         </div>
         <div>
-          <label>Fecha estimada de informe</label>
+          <label>Fecha estimada de informe *</label>
           <input type="date" name="fecha_estimacion_informe" required />
         </div>
       </div>
 
-      <button type="submit" id="btnEnviar">Enviar</button>
+      <button type="submit" id="btnEnviar">Enviar auditoría</button>
       <div class="mensaje" id="mensaje"></div>
     </form>
   </div>
@@ -57,6 +60,7 @@
     form.addEventListener("submit", async function(e) {
       e.preventDefault();
       btn.disabled = true;
+      msg.className = "mensaje";
       msg.textContent = "Enviando...";
 
       const data = {
@@ -69,20 +73,23 @@
       };
 
       try {
-        const resp = await fetch("https://default7042d393b8c4451aa8f811f6aed5da.85.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3260704b65884a30af1b8d8602a0db7a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=E6VyfXl22cZQJLQWaPm-GyKot4Q-LwKq0g5zxxrqbfk", {
+        const resp = await fetch("TU_URL_POWER_AUTOMATE", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
         });
 
         if (resp.ok) {
-          msg.textContent = "Formulario enviado correctamente.";
+          msg.textContent = "✅ Formulario enviado correctamente. Te contactaremos pronto.";
+          msg.className = "mensaje exito";
           form.reset();
         } else {
-          msg.textContent = "Error al enviar (código " + resp.status + ").";
+          msg.textContent = "❌ Error al enviar (código " + resp.status + "). Inténtalo de nuevo.";
+          msg.className = "mensaje error";
         }
       } catch (err) {
-        msg.textContent = "Error de conexión al enviar el formulario.";
+        msg.textContent = "❌ Error de conexión. Verifica tu internet e inténtalo de nuevo.";
+        msg.className = "mensaje error";
       } finally {
         btn.disabled = false;
       }
