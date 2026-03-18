@@ -1,156 +1,336 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Formulario de Auditoría Clave</title>
-  <style>
-    body { font-family: Arial, sans-serif; background:#ffffff; margin:0; max-width:100%; }
-    .header { text-align: center; margin-bottom: 0px; padding: 15px 0; }
-    .logo { max-width: 200px; height: auto; margin-bottom: 2px; }
-    .container { max-width:900px; margin:10px auto; background:#f5f5f5; padding:25px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
-    h1 { margin-top:0; margin-bottom: 5px; color:#005f66; }
-    label { display:block; margin-top:12px; font-weight:bold; color: #003d47; }
-    input { width:100%; padding:12px 15px; margin-top:5px; box-sizing:border-box; border: 2px solid #00727a; border-radius: 12px; color: #003d47; }
-    input::placeholder { color: #666; }
-    input:focus { outline: none; border-color: #00727a; box-shadow: 0 0 0 3px rgba(0,114,122,0.1); }
-    button { width: 100%; margin-top:20px; padding:12px 15px; background:#00727a; color:white; border:none; border-radius: 12px; cursor:pointer; font-size:16px; font-weight: bold; display: flex; justify-content: center; align-items: center; box-sizing: border-box; }
-    button:disabled { background:#999; cursor:not-allowed; }
-    .fila { display:flex; gap:20px; }
-    .fila > div { flex:1; }
-    .mensaje { margin-top:15px; font-size:14px; padding:10px; border-radius:8px; }
-    .exito { background:#d4edda; color:#155724; }
-    .error { background:#f8d7da; color:#721c24; }
-    .sugerencia { 
-      background: #e7f3ff; 
-      border: 1px solid #00727a; 
-      padding: 8px; 
-      border-radius: 6px; 
-      margin-top: 5px; 
-      font-size: 14px; 
-      color: #003d47;
-    }
-  </style>
+
+<meta charset="UTF-8">
+<title>Formulario de Auditoría Clave</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#ffffff;
+margin:0;
+max-width:100%;
+}
+
+.header{
+text-align:center;
+margin-bottom:0px;
+padding:15px 0;
+}
+
+.logo{
+max-width:200px;
+height:auto;
+margin-bottom:2px;
+}
+
+.container{
+max-width:900px;
+margin:10px auto;
+background:#f5f5f5;
+padding:25px;
+border-radius:12px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+h1{
+margin-top:0;
+margin-bottom:5px;
+color:#005f66;
+}
+
+label{
+display:block;
+margin-top:12px;
+font-weight:bold;
+color:#003d47;
+}
+
+input{
+width:100%;
+padding:12px 15px;
+margin-top:5px;
+box-sizing:border-box;
+border:2px solid #00727a;
+border-radius:12px;
+color:#003d47;
+}
+
+input::placeholder{
+color:#666;
+}
+
+input:focus{
+outline:none;
+border-color:#00727a;
+box-shadow:0 0 0 3px rgba(0,114,122,0.1);
+}
+
+button{
+width:100%;
+margin-top:20px;
+padding:12px 15px;
+background:#00727a;
+color:white;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+display:flex;
+justify-content:center;
+align-items:center;
+box-sizing:border-box;
+}
+
+button:disabled{
+background:#999;
+cursor:not-allowed;
+}
+
+.fila{
+display:flex;
+gap:20px;
+}
+
+.fila > div{
+flex:1;
+}
+
+.mensaje{
+margin-top:15px;
+font-size:14px;
+padding:10px;
+border-radius:8px;
+}
+
+.exito{
+background:#d4edda;
+color:#155724;
+}
+
+.error{
+background:#f8d7da;
+color:#721c24;
+}
+
+.sugerencia{
+background:#e7f3ff;
+border:1px solid #00727a;
+padding:8px;
+border-radius:6px;
+margin-top:5px;
+font-size:14px;
+color:#003d47;
+}
+
+</style>
+
 </head>
+
 <body>
-  <div class="header">
-    <img src="logoclave.png" alt="Logo Clave Capital" class="logo">
-    <h1>Formulario de Auditoría Clave</h1>
-  </div>
-  <div class="container">
-    <form id="auditoriaForm">
-      <label>Correo empresa:</label>
-      <input type="email" id="correoEmpresa" name="Correo empresa" required />
-      <div id="sugerenciaCorreo" class="sugerencia" style="display:none;"></div>
 
-      <label>Empresa auditora:</label>
-      <input type="text" name="Empresa auditora" required />
+<div class="header">
+<img src="logoclave.png" alt="Logo Clave Capital" class="logo">
+<h1>Formulario de Auditoría Clave</h1>
+</div>
 
-      <label>Nombre auditor:</label>
-      <input type="text" name="Nombre auditor" required />
+<div class="container">
 
-      <label>Correo auditor:</label>
-      <input type="email" name="Correo auditor" required />
+<form id="auditoriaForm">
 
-      <div class="fila">
-        <div>
-          <label>Fecha inicio auditoría:</label>
-          <input type="date" name="Fecha inicio auditoría" required />
-        </div>
-        <div>
-          <label>Fecha estimada de informe:</label>
-          <input type="date" name="Fecha estimada de informe" required />
-        </div>
-      </div>
+<label>Correo empresa:</label>
+<input type="email" id="correoEmpresa" required>
+<div id="sugerenciaCorreo" class="sugerencia" style="display:none;"></div>
 
-      <button type="submit" id="btnEnviar">Enviar</button>
-      <div class="mensaje" id="mensaje"></div>
-    </form>
-  </div>
+<label>Empresa auditora:</label>
+<input type="text" id="empresaAuditora" required>
 
-  <script>
-    // 🎯 FLUJO B - ENVÍO PRINCIPAL (al pulsar Enviar)
-    const URL_FLUJO_B = "https://default7042d393b8c4451aa8f811f6aed5da.85.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3260704b65884a30af1b8d8602a0db7a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=E6VyfXl22cZQJLQWaPm-GyKot4Q-LwKq0g5zxxrqbfk";
+<label>Nombre auditor:</label>
+<input type="text" id="nombreAuditor" required>
 
-    // 🎯 FLUJO A - AUTOCOMPLETADO (cuando escribes en Correo empresa)
-    const URL_FLUJO_A = "https://default7042d393b8c4451aa8f811f6aed5da.85.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/75ddb566fde0445c8caddce895843c48/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Y0vVfcdWjgMVGq0PwINaRMuhZ7U0-ehdPkGj_To_PyI";
+<label>Correo auditor:</label>
+<input type="email" id="correoAuditor" required>
 
-    const correoInput = document.getElementById("correoEmpresa");
-    const sugerenciaDiv = document.getElementById("sugerenciaCorreo");
-    const form = document.getElementById("auditoriaForm");
-    const btn = document.getElementById("btnEnviar");
-    const msg = document.getElementById("mensaje");
+<div class="fila">
 
-    // 🔥 AUTOCOMPLETADO EN TIEMPO REAL (Flujo A)
-    let timeoutId;
-    correoInput.addEventListener("input", async function() {
-      clearTimeout(timeoutId);
-      
-      const correo = this.value.trim();
-      if (correo.length < 3) {
-        sugerenciaDiv.style.display = "none";
-        return;
-      }
+<div>
+<label>Fecha inicio auditoría:</label>
+<input type="date" id="fechaInicio" required>
+</div>
 
-      timeoutId = setTimeout(async () => {
-        try {
-          const data = { correo_empresa: correo };
-          await fetch(URL_FLUJO_A, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-          });
-          
-          // Aquí el Flujo A debería devolver datos para autocompletar
-          // Por ahora solo mostramos que está buscando
-          sugerenciaDiv.textContent = "🔍 Buscando datos para " + correo + "...";
-          sugerenciaDiv.style.display = "block";
-          
-        } catch (err) {
-          sugerenciaDiv.textContent = "❌ Error en autocompletado";
-          sugerenciaDiv.style.display = "block";
-        }
-      }, 800); // Espera 800ms después de que deje de escribir
-    });
+<div>
+<label>Fecha estimada de informe:</label>
+<input type="date" id="fechaInforme" required>
+</div>
 
-    // 🔥 ENVÍO PRINCIPAL (Flujo B)
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault();
-      btn.disabled = true;
-      msg.textContent = "Enviando...";
-      msg.className = "mensaje";
+</div>
 
-      const data = {
-        correo_empresa: document.querySelector('[name="Correo empresa"]').value,
-        nombre_empresa_auditora: document.querySelector('[name="Empresa auditora"]').value,
-        nombre_auditor: document.querySelector('[name="Nombre auditor"]').value,
-        correo_auditor: document.querySelector('[name="Correo auditor"]').value,
-        fecha_inicio_auditoria: document.querySelector('[name="Fecha inicio auditoría"]').value,
-        fecha_estimacion_informe: document.querySelector('[name="Fecha estimada de informe"]').value
-      };
+<button type="submit" id="btnEnviar">Enviar</button>
 
-      try {
-        const resp = await fetch(URL_FLUJO_B, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
+<div class="mensaje" id="mensaje"></div>
 
-        if (resp.ok) {
-          msg.textContent = "✅ Formulario enviado correctamente";
-          msg.className = "mensaje exito";
-          form.reset();
-          sugerenciaDiv.style.display = "none";
-        } else {
-          msg.textContent = "❌ Error al enviar (código " + resp.status + ")";
-          msg.className = "mensaje error";
-        }
-      } catch (err) {
-        msg.textContent = "❌ Error de conexión";
-        msg.className = "mensaje error";
-      } finally {
-        btn.disabled = false;
-      }
-    });
-  </script>
+</form>
+
+</div>
+
+<script>
+
+/* ================================
+FLUJOS POWER AUTOMATE
+================================ */
+
+const URL_FLUJO_A = "https://default7042d393b8c4451aa8f811f6aed5da.85.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/75ddb566fde0445c8caddce895843c48/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Y0vVfcdWjgMVGq0PwINaRMuhZ7U0-ehdPkGj_To_PyI";
+
+const URL_FLUJO_B = "https://default7042d393b8c4451aa8f811f6aed5da.85.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3260704b65884a30af1b8d8602a0db7a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=E6VyfXl22cZQJLQWaPm-GyKot4Q-LwKq0g5zxxrqbfk";
+
+/* ================================
+ELEMENTOS
+================================ */
+
+const correoInput = document.getElementById("correoEmpresa");
+const empresaAuditora = document.getElementById("empresaAuditora");
+const nombreAuditor = document.getElementById("nombreAuditor");
+const correoAuditor = document.getElementById("correoAuditor");
+
+const fechaInicio = document.getElementById("fechaInicio");
+const fechaInforme = document.getElementById("fechaInforme");
+
+const sugerenciaDiv = document.getElementById("sugerenciaCorreo");
+
+const form = document.getElementById("auditoriaForm");
+const btn = document.getElementById("btnEnviar");
+const msg = document.getElementById("mensaje");
+
+/* ================================
+AUTOCOMPLETADO
+================================ */
+
+let timeoutBusqueda;
+
+correoInput.addEventListener("input", function(){
+
+clearTimeout(timeoutBusqueda);
+
+const correo = this.value.trim();
+
+if(correo.length < 5){
+sugerenciaDiv.style.display="none";
+return;
+}
+
+timeoutBusqueda = setTimeout(buscarEmpresa,700);
+
+});
+
+async function buscarEmpresa(){
+
+const correo = correoInput.value.trim();
+
+try{
+
+const resp = await fetch(URL_FLUJO_A,{
+method:"POST",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify({correo_empresa:correo})
+});
+
+if(!resp.ok){
+throw new Error("Respuesta no válida");
+}
+
+const data = await resp.json();
+
+if(data && data.empresa_auditora){
+
+empresaAuditora.value = data.empresa_auditora || "";
+nombreAuditor.value = data.nombre_auditor || "";
+correoAuditor.value = data.correo_auditor || "";
+
+sugerenciaDiv.textContent="✅ Empresa encontrada. Datos autocompletados.";
+sugerenciaDiv.style.display="block";
+
+}else{
+
+empresaAuditora.value="";
+nombreAuditor.value="";
+correoAuditor.value="";
+
+sugerenciaDiv.textContent="ℹ️ No hay datos previos para este correo.";
+sugerenciaDiv.style.display="block";
+
+}
+
+}catch(error){
+
+console.error("Error autocompletado:",error);
+
+sugerenciaDiv.textContent="❌ Error consultando datos";
+sugerenciaDiv.style.display="block";
+
+}
+
+}
+
+/* ================================
+ENVÍO FORMULARIO
+================================ */
+
+form.addEventListener("submit",async function(e){
+
+e.preventDefault();
+
+btn.disabled=true;
+
+msg.textContent="Enviando formulario...";
+msg.className="mensaje";
+
+const data={
+
+correo_empresa:correoInput.value.trim(),
+nombre_empresa_auditora:empresaAuditora.value.trim(),
+nombre_auditor:nombreAuditor.value.trim(),
+correo_auditor:correoAuditor.value.trim(),
+fecha_inicio_auditoria:fechaInicio.value,
+fecha_estimacion_informe:fechaInforme.value
+
+};
+
+try{
+
+const resp = await fetch(URL_FLUJO_B,{
+method:"POST",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify(data)
+});
+
+if(!resp.ok){
+throw new Error("Error servidor");
+}
+
+msg.textContent="✅ Formulario enviado correctamente";
+msg.className="mensaje exito";
+
+form.reset();
+sugerenciaDiv.style.display="none";
+
+}catch(error){
+
+console.error("Error envío:",error);
+
+msg.textContent="❌ Error enviando el formulario";
+msg.className="mensaje error";
+
+}
+
+btn.disabled=false;
+
+});
+
+</script>
+
 </body>
 </html>
